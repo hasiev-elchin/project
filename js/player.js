@@ -1,3 +1,5 @@
+var s_btn = document.querySelector('.s_btn');
+
 jQuery('.sound-button').bind("click", function(event) {
 	if (jQuery(this).hasClass('on')) {
 		//если данная мелодия уже проигрывается
@@ -18,5 +20,8 @@ jQuery('.sound-button').bind("click", function(event) {
 		pl.src = jQuery(this).attr('data-src');
 		//включаем проигрывание
 		pl.play();
+		$('#my-hidden-player').on('ended', function() {
+   			jQuery('.sound-button').removeClass('on');
+		});
 	}
 });
